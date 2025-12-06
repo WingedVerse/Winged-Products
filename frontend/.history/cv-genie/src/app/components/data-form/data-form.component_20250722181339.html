@@ -1,0 +1,241 @@
+<!-- <div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="form-container w-100 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    <div *ngIf="step === 1">
+      <h4>Basic Info</h4>
+      <form class="row g-3">
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">First Name</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Medium Name</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Last Name</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+          <label for="floatingTextarea">Address</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="tel" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Phone</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">city</label>
+        </div>
+        <div class="form-floating col-md-4">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected>State</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelect">State</label>
+        </div>
+        <div class="form-floating col-md-2">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Zip</label>
+        </div>
+      </form>
+      <button class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+    </div>
+
+    <div *ngIf="step === 2">
+      <h4>Summary</h4>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+          style="height: 100px"></textarea>
+        <label for="floatingTextarea2">summary</label>
+      </div>
+      <button class="btn btn-secondary mt-3" (click)="prevStep()">Back</button>
+      <button class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+    </div>
+
+    <div *ngIf="step === 3">
+      <h4>Skills</h4>
+      <div>
+        <span *ngFor="let s of userData.skills" class="skill-chip badge bg-warning">{{s}}</span>
+      </div>
+      <form class="row g-3">
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newSkill" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">add skill...</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <button type="button" class="btn btn-success" (click)="addSkill()"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      </form>
+      <button class="btn btn-secondary mt-3" (click)="prevStep()">Back</button>
+      <button class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+    </div>
+
+    <div *ngIf="step === 4">
+      <h4>Languages</h4>
+      <div>
+        <span *ngFor="let l of userData.languages" class="skill-chip badge bg-warning">{{l}}</span>
+      </div>
+      <form class="row g-3">
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newLanguage" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">add language...</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <button type="button" class="btn btn-success" (click)="addLanguage()"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      </form>
+      <button class="btn btn-secondary mt-3" (click)="prevStep()">Back</button>
+      <button class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+    </div>
+
+    <div *ngIf="step === 5">
+      <h4>Education</h4>
+      <div>
+        <span *ngFor="let ed of userData.education" class="skill-chip badge bg-warning">{{ed.institute}}</span>
+      </div>
+      <form class="row g-3">
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newEducation.institute" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Institute</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newEducation.degree" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Degree</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newEducation.branch" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Branch</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newEducation.location" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Location</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newEducation.startDate" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Start Date</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newEducation.endDate" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">End Date</label>
+        </div>
+        <div class="form-floating col-12">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"
+            [(ngModel)]="newEducation.description" [ngModelOptions]="{standalone: true}"></textarea>
+          <label for="floatingTextarea2">Description</label>
+        </div>
+        <div class="form-floating col-12">
+          <button type="button" class="btn btn-success" (click)="addEducation()"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      </form>
+      <button class="btn btn-secondary mt-3" (click)="prevStep()">Back</button>
+      <button class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+    </div>
+
+    <div *ngIf="step === 6">
+      <h4>Experience</h4>
+      <div>
+        <span *ngFor="let ex of userData.experience" class="skill-chip badge bg-warning">{{ex.company}}</span>
+      </div>
+      <form class="row g-3">
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newExperience.company" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Company</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newExperience.designation" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Designation</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newExperience.startDate" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Start Date</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newExperience.endDate" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">End Date</label>
+        </div>
+        <div class="form-floating col-12">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"
+            [(ngModel)]="newExperience.description" [ngModelOptions]="{standalone: true}"></textarea>
+          <label for="floatingTextarea2">Description</label>
+        </div>
+        <div class="form-floating col-12">
+          <button type="button" class="btn btn-success" (click)="addExperience()"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      </form>
+      <button class="btn btn-secondary mt-3" (click)="prevStep()">Back</button>
+      <button class="btn btn-primary mt-3" (click)="nextStep()">Next</button>
+    </div>
+
+    <div *ngIf="step === 7">
+      <h4>Projects</h4>
+      <div>
+        <span *ngFor="let p of userData.projects" class="skill-chip badge bg-warning">{{p.projectName}}</span>
+      </div>
+      <form class="row g-3">
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newProject.projectName" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Project Name</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newProject.skillSet" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Skill Set</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newProject.startDate" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">Start Date</label>
+        </div>
+        <div class="form-floating col-md-6">
+          <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
+            [(ngModel)]="newProject.endDate" [ngModelOptions]="{standalone: true}">
+          <label for="floatingInput">End Date</label>
+        </div>
+        <div class="form-floating col-12">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"
+            [(ngModel)]="newProject.description" [ngModelOptions]="{standalone: true}"></textarea>
+          <label for="floatingTextarea2">Description</label>
+        </div>
+        <div class="form-floating col-12">
+          <button type="button" class="btn btn-success" (click)="addProject()"><i class="bi bi-plus-lg"></i></button>
+        </div>
+      </form>
+      <button class="btn btn-secondary mt-3" (click)="prevStep()">Back</button>
+      <button class="btn btn-success mt-3" (click)="submit();nextStep()">Finish</button>
+    </div>
+
+    <div *ngIf="step === 8">
+      <div class="card-container">
+        <div class="card-content">
+          <div class="finish-text">
+            <h4>Thank You, You are done.</h4>
+            <p>Start choosing the templates and download.</p>
+          </div>
+          <div class="button-group">
+            <button class="btn btn-success mt-3" routerLink="/home">GO!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
